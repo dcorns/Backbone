@@ -7,7 +7,10 @@
 
 //Inheritance and a class function
 var Vehicle = Backbone.Model.extend({
-  type: 'car'
+  type: 'car',
+  initialize: function(){
+    console.log('initialize runs when a new object is instantiated from the constructor');
+  }
 },
 //class properties come after the instance object
   {
