@@ -24,7 +24,7 @@
       var position = this.model.get('position');
       this.$el.css({
         left: position.x,
-        right: position.y
+        top: position.y
       });
     }
   });
