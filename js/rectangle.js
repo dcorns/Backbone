@@ -39,7 +39,7 @@
     }
   });
 
-  var myRectangle = new Rectangle({
+  var myRectangles = [new Rectangle({
     width: 100,
     height: 60,
     position: {
@@ -47,9 +47,38 @@
       y: 150
     },
     color: '#ff0000'
-  });
+  }),
+    new Rectangle({
+      width: 10,
+      height: 5,
+      position: {
+        x: 300,
+        y: 100
+      },
+      color: '#00ff00'
+    }),
+    new Rectangle({
+      width: 50,
+      height: 30,
+      position: {
+        x: 50,
+        y: 10
+      },
+      color: '#0000ff'
+    }),
+    new Rectangle({
+      width: 25,
+      height: 10,
+      position: {
+        x: 40,
+        y: 40
+      },
+      color: '#ff00fd'
+    })];
 
-  var myView = new RectangleView({model: myRectangle});
-  $('div#canvas').append(myView.render().el);
+  _(myRectangles).each(function(mdl){
+    $('div#canvas').append(new RectangleView({model: mdl}).render().el);
+  });
+  
 })();
 
