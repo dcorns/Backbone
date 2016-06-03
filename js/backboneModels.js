@@ -75,3 +75,40 @@ $body.append(schwin.get('html'));
 //using has--returns true if property or method is native to instance
 console.log(schwin.has('toString'));
 console.log(schwin.has('question'));
+
+//model events
+schwin.on('change', function(){
+  console.log('schwin data changed', schwin.dump());
+});
+
+schwin.on('change:height', function(){
+  console.log('schwin height is now:', schwin.get('height'));
+});
+
+schwin.set('color', 'red');
+schwin.set('height', '300');
+schwin.set({
+  color: 'green',
+  height: 48
+});
+
+//custom events
+//Creating a custom event on a new var that is not a backbone object
+var noBackbone = _.extend({}, Backbone.Events);
+//note that using : is not required but is a best practice for name spacing events
+noBackbone.on('noBackbone:break', function(e){
+  console.log('Backbone broke at', e.mile);
+});
+noBackbone.trigger('noBackbone:break', {mile: 34});
+//Adding event to backbone model
+schwin.on('bike:break', function(e){
+  console.log('bike brake ', e.state);
+});
+schwin.trigger('bike:break', {state: 'on'});
+schwin.trigger('bike:break', {state: 'off'});
+//Turn events off
+noBackbone.off('noBackbone:break');
+schwin.off('bike:break');
+
+//id and cid once a model has been saved to the server, it will have an id, until then it only has a cid
+console.log(schwin.isNew(), schwin.id, schwin.cid);
