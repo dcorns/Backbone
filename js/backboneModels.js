@@ -56,3 +56,22 @@ console.log('schwin is instance of Bicyle', schwin instanceof Bicycle);
 console.log('schwin is instance of Vehicle', schwin instanceof Vehicle);
 console.log('schwin is instance of Backbone.Model', schwin instanceof Backbone.Model);
 schwin.dump();
+
+//using set
+schwin.set('color', 'grey');
+schwin.set({
+  length: 56,
+  height: 48
+});
+schwin.dump();
+
+//using get and escape
+var $body = $('body');
+$body.append(schwin.get('color'));
+schwin.set('html', '<h1>Hello World</h1>');
+$body.append(schwin.escape('html'));
+$body.append(schwin.get('html'));
+
+//using has--returns true if property or method is native to instance
+console.log(schwin.has('toString'));
+console.log(schwin.has('question'));
