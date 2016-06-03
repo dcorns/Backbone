@@ -13,6 +13,9 @@ var Vehicle = Backbone.Model.extend({
   },
   toString: function(){
     return JSON.stringify(this.toJSON());
+  },
+  dump: function(){
+    console.log(this.toString());
   }
 },
 //class properties come after the instance object
@@ -43,6 +46,7 @@ console.log(bayline.toString());
 //bicycle inherits from vehicle
 
 var Bicycle = Vehicle.extend({});
+console.log(Bicycle.question());
 var schwin = new Bicycle({
   forks: 'fixed'
 });
@@ -51,3 +55,4 @@ console.log(schwin.toString());
 console.log('schwin is instance of Bicyle', schwin instanceof Bicycle);
 console.log('schwin is instance of Vehicle', schwin instanceof Vehicle);
 console.log('schwin is instance of Backbone.Model', schwin instanceof Backbone.Model);
+schwin.dump();
